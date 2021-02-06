@@ -1,3 +1,25 @@
+.body {
+  background-image: url("../../assets/icon/paisaje.jpg");
+  background-repeat: no-repeat;
+  text-align: center;
+
+}
+
+.total {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(107, 107, 107, 0.842);
+  backdrop-filter: blur(2px);
+  height: auto;
+  text-align: center;
+}
+
+.inputs {
+  text-align: center;
+  width: 20rem;
+  border-width: 5px;
+  border-style: solid;
+}
 #container {
   text-align: center;
 
