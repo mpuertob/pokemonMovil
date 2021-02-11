@@ -18,6 +18,17 @@ export class HomePage {
     this.mapa.set('normal', '../assets/icon/normal.png');
     this.mapa.set('poison', '../assets/icon/veneno.png');
     this.mapa.set('grass', '../assets/icon/planta.png');
+    this.mapa.set('fairy', '../assets/icon/hada.png');
+    this.mapa.set('electric', '../assets/icon/electric.png');
+    this.mapa.set('dark', '../assets/icon/siniestro.png');
+    this.mapa.set('steel', '../assets/icon/acero.png');
+    this.mapa.set('bug', '../assets/icon/bicho.png');
+    this.mapa.set('dragon', '../assets/icon/dragon.png');
+    this.mapa.set('ghost', '../assets/icon/fantasma.png');
+    this.mapa.set('fighting', '../assets/icon/lucha.png');
+    this.mapa.set('psychic', '../assets/icon/psiquico.png');
+    this.mapa.set('ground', '../assets/icon/tierra.png');
+    this.mapa.set('rock', '../assets/icon/roca.png');
   }
   async buscarPokemon() {
     this.pokemon = this.pokemon.toLowerCase();
