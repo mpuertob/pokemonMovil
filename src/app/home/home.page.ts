@@ -103,9 +103,8 @@ export class HomePage {
       let nombreTipo: String = type.type.name;
       let elemento = this.mapa.get(nombreTipo);
       let tipo: Tipo = new Tipo(nombreTipo, elemento);
-      html += `<img src="${tipo.elemento}" alt="${tipo.elemento}"></img>`;
+      html += `<img src="${tipo.elemento}" alt="${tipo.elemento}">${nombreTipo}.</img>`;
     });
-    // html += '.';
     h2.innerHTML = html;
     $textoAmostrar.appendChild(h2);
   }
