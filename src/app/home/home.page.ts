@@ -51,8 +51,10 @@ export class HomePage {
             this.mostrarTipo($textoAmostrar, types);
             this.mostrarMovimientos($textoAmostrar, moves);
           })
-          .catch((err) => {
-            alert('Fallo al transformarlo en json :' + err);
+          .catch(() => {
+            alert('Pokemon no encontrado');
+            const $textoAmostrar = this.d.getElementById('textoAmostrar');
+            $textoAmostrar.innerHTML = `<div><img src="../assets/icon/noEncontrado.jpg"><img src="../assets/icon/anonymous.jpg"></div>`;
           });
       })
       .catch((err) => {
