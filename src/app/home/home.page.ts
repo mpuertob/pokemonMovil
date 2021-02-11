@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Tipo } from '../core/model/Tipo';
+import { ListaService } from '../share/lista.service';
 
 @Component({
   selector: 'app-home',
@@ -9,27 +10,7 @@ import { Tipo } from '../core/model/Tipo';
 export class HomePage {
   pokemon: String = 'ho-oh';
   d: Document = document;
-  mapa: Map<String, String> = new Map<String, String>();
-  constructor() {
-    this.mapa.set('fire', '../assets/icon/fire.png');
-    this.mapa.set('water', '../assets/icon/water.png');
-    this.mapa.set('flying', '../assets/icon/flying.png');
-    this.mapa.set('ice', '../assets/icon/ice.png');
-    this.mapa.set('normal', '../assets/icon/normal.png');
-    this.mapa.set('poison', '../assets/icon/veneno.png');
-    this.mapa.set('grass', '../assets/icon/planta.png');
-    this.mapa.set('fairy', '../assets/icon/hada.png');
-    this.mapa.set('electric', '../assets/icon/electric.png');
-    this.mapa.set('dark', '../assets/icon/siniestro.png');
-    this.mapa.set('steel', '../assets/icon/acero.png');
-    this.mapa.set('bug', '../assets/icon/bicho.png');
-    this.mapa.set('dragon', '../assets/icon/dragon.png');
-    this.mapa.set('ghost', '../assets/icon/fantasma.png');
-    this.mapa.set('fighting', '../assets/icon/lucha.png');
-    this.mapa.set('psychic', '../assets/icon/psiquico.png');
-    this.mapa.set('ground', '../assets/icon/tierra.png');
-    this.mapa.set('rock', '../assets/icon/roca.png');
-  }
+  constructor(private listaService: ListaService) {}
   async buscarPokemon() {
     this.pokemon = this.pokemon.toLowerCase();
     let url = 'https://pokeapi.co/api/v2/pokemon/' + this.pokemon;
@@ -54,7 +35,7 @@ export class HomePage {
           .catch(() => {
             alert('Pokemon no encontrado');
             const $textoAmostrar = this.d.getElementById('textoAmostrar');
-            $textoAmostrar.innerHTML = `<div><img src="../assets/icon/noEncontrado.jpg"><img src="../assets/icon/anonymous.jpg"></div>`;
+            $textoAmostrar.innerHTML = `<div><img src="../assets/icon/anonymous.jpg"><img src="../assets/icon/noEncontrado.jpg"></div>`;
           });
       })
       .catch((err) => {
@@ -103,7 +84,7 @@ export class HomePage {
     let html = `Pokemon de Tipo: `;
     types.forEach((type) => {
       let nombreTipo: String = type.type.name;
-      let elemento = this.mapa.get(nombreTipo);
+      let elemento = this.listaService.mapa.get(nombreTipo);
       let tipo: Tipo = new Tipo(nombreTipo, elemento);
       html += `<img src="${tipo.elemento}" alt="${tipo.elemento}">${nombreTipo}.</img>`;
     });
