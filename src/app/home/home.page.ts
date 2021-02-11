@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Tipo } from '../core/model/Tipo';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,13 @@ import { Component } from '@angular/core';
 export class HomePage {
   pokemon: String = 'ho-oh';
   d: Document = document;
-  constructor() {}
+  mapa: Map<String, String> = new Map<String, String>();
+  constructor() {
+    this.mapa.set('fire', '../assets/icon/fire.png');
+    this.mapa.set('flying', '../assets/icon/flying.png');
+    this.mapa.set('water', '../assets/icon/water.png');
+    this.mapa.set('ice', '../assets/icon/ice.png');
+  }
   async buscarPokemon() {
     this.pokemon = this.pokemon.toLowerCase();
     let url = 'https://pokeapi.co/api/v2/pokemon/' + this.pokemon;
@@ -78,12 +85,19 @@ export class HomePage {
     console.log(types);
     let h2 = this.d.createElement('h2');
     let html = `Pokemon de Tipo: `;
+    // let img = ``;
     types.forEach((type) => {
-      let tipo: String = type.type.name;
-      html += '-' + tipo;
+      let nombreTipo: String = type.type.name;
+      alert(nombreTipo);
+      let elemento = this.mapa.get(nombreTipo);
+      alert(elemento);
+      let tipo: Tipo = new Tipo(nombreTipo, elemento);
+      console.log(tipo);
+      // html += '-' + nombreTipo;
+      html += `<img src="${tipo.elemento}" alt="${tipo.elemento}"></img>`;
     });
-    html += '.';
-    h2.textContent = html;
+    // html += '.';
+    h2.innerHTML = html;
     $textoAmostrar.appendChild(h2);
   }
   mostrarMovimientos($textoAmostrar: HTMLElement, moves: any) {
@@ -97,7 +111,6 @@ export class HomePage {
         <option>${cadenitas}</option>`;
     });
     html += `</Select>`;
-    console.log(html);
     $divMoves.innerHTML = html;
     $textoAmostrar.appendChild($divMoves);
   }
