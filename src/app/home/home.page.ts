@@ -33,9 +33,9 @@ export class HomePage {
             this.mostrarMovimientos($textoAmostrar, moves);
           })
           .catch(() => {
-            alert('Pokemon no encontrado');
+            let error = 'Pokemon No Encontrado';
             const $textoAmostrar = this.d.getElementById('textoAmostrar');
-            $textoAmostrar.innerHTML = `<div><img src="../assets/icon/anonymous.jpg"><img src="../assets/icon/noEncontrado.jpg"></div>`;
+            $textoAmostrar.innerHTML = `<div><h1>${error}</h1><img src="../assets/icon/anonymous.jpg"><img src="../assets/icon/noEncontrado.jpg"></div>`;
           });
       })
       .catch((err) => {
