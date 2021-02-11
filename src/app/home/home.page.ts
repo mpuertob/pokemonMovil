@@ -12,9 +12,12 @@ export class HomePage {
   mapa: Map<String, String> = new Map<String, String>();
   constructor() {
     this.mapa.set('fire', '../assets/icon/fire.png');
-    this.mapa.set('flying', '../assets/icon/flying.png');
     this.mapa.set('water', '../assets/icon/water.png');
+    this.mapa.set('flying', '../assets/icon/flying.png');
     this.mapa.set('ice', '../assets/icon/ice.png');
+    this.mapa.set('normal', '../assets/icon/normal.png');
+    this.mapa.set('poison', '../assets/icon/veneno.png');
+    this.mapa.set('grass', '../assets/icon/planta.png');
   }
   async buscarPokemon() {
     this.pokemon = this.pokemon.toLowerCase();
@@ -85,15 +88,10 @@ export class HomePage {
     console.log(types);
     let h2 = this.d.createElement('h2');
     let html = `Pokemon de Tipo: `;
-    // let img = ``;
     types.forEach((type) => {
       let nombreTipo: String = type.type.name;
-      alert(nombreTipo);
       let elemento = this.mapa.get(nombreTipo);
-      alert(elemento);
       let tipo: Tipo = new Tipo(nombreTipo, elemento);
-      console.log(tipo);
-      // html += '-' + nombreTipo;
       html += `<img src="${tipo.elemento}" alt="${tipo.elemento}"></img>`;
     });
     // html += '.';
