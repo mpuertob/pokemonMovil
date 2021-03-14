@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Tipo } from '../core/model/Tipo';
+import { HabladorMovilService } from '../share/hablador-movil.service';
 import { ListaService } from '../share/lista.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { ListaService } from '../share/lista.service';
 export class HomePage {
   pokemon: String = 'ho-oh';
   d: Document = document;
-  constructor(private listaService: ListaService) {}
+  constructor(
+    private listaService: ListaService,
+    private hablador: HabladorMovilService
+  ) {}
   async buscarPokemon() {
     this.pokemon = this.pokemon.toLowerCase();
     let url = 'https://pokeapi.co/api/v2/pokemon/' + this.pokemon;
@@ -82,12 +86,18 @@ export class HomePage {
     console.log(types);
     let h2 = this.d.createElement('h2');
     let html = `Pokemon de Tipo: `;
+    let tipos = [];
     types.forEach((type) => {
       let nombreTipo: String = type.type.name;
+      tipos.push(nombreTipo);
       let elemento = this.listaService.mapa.get(nombreTipo);
       let tipo: Tipo = new Tipo(nombreTipo, elemento);
       html += `<img src="${tipo.elemento}" alt="${tipo.elemento}">${nombreTipo}.</img>`;
     });
+    let cadenaHablar = tipos.join('y de tipo');
+    this.hablador.hablar(
+      'Su nombre es ' + this.pokemon + ' es de tipo ' + cadenaHablar
+    );
     h2.innerHTML = html;
     $textoAmostrar.appendChild(h2);
   }

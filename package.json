@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~11.0.5",
     "@angular/platform-browser-dynamic": "~11.0.5",
     "@angular/router": "~11.0.5",
+    "@ionic-native/core": "^5.31.1",
+    "@ionic-native/text-to-speech": "^5.31.1",
     "@ionic/angular": "^5.5.2",
     "cordova-android": "9.0.0",
     "rxjs": "~6.6.0",
@@ -31,7 +33,7 @@
     "@angular/compiler": "~11.0.5",
     "@angular/compiler-cli": "~11.0.5",
     "@angular/language-service": "~11.0.5",
-    "@ionic/angular-toolkit": "^3.0.0",
+    "@ionic/angular-toolkit": "^3.1.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
@@ -41,6 +43,7 @@
     "cordova-plugin-ionic-webview": "^4.2.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-tts": "^0.2.3",
     "cordova-plugin-whitelist": "^1.3.3",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -65,7 +68,8 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-tts": {}
     },
     "platforms": [
       "android"
